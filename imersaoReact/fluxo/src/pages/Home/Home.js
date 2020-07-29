@@ -21,6 +21,11 @@ function Home() {
         category={dadosIniciais.categorias[0]}
       />
 
+      {/* dadosIniciais.categorias.forEach(function(cat, i) {
+        <Carousel
+        category={cat[i]}
+        />}) */}
+
       <Carousel
         category={dadosIniciais.categorias[1]}
       />
