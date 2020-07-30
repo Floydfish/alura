@@ -4,13 +4,13 @@ import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField'
 
 function CadastroCategoria() {
-  const [categories, setCategories] = useState([]);
-
   const initialValues = {
     name: '',
-    description: '',
+    description: 'Ha',
     color: '',
   }
+  
+  const [categories, setCategories] = useState([]);
 
   const [values, setValues] = useState(initialValues);
 
@@ -22,10 +22,10 @@ function CadastroCategoria() {
   }
 
   function handleChange(event) {
-    const { getAttribute, value} = event.target;
+    // const { getAttribute, value } = event.target;
     setValue(
-      getAttribute('name'), 
-      value
+      event.target.getAttribute('name'), 
+      event.target.value
     );
   }
 
@@ -44,33 +44,29 @@ function CadastroCategoria() {
 
             setValues(initialValues)
       }}>
-        <FormField 
+        <FormField
+          label="Nome da Categoria: "
+          type="text" 
           value={values.name}
+          name="name"
           onChange={handleChange}
         />
 
-        <div>
-          <label>
-          Descrição:
-            <textarea 
-              type="text"
-              value={values.description}
-              name="description"
-              onChange={handleChange}
-              />
-          </label>
-        </div>
-        <div>
-          <label>
-          Cor:
-            <input
-              type="color"
-              defaultValue={values.color}
-              name="color"
-              onChange={handleChange}
-              />
-          </label>
-        </div>
+        <FormField
+          label="Descrição da Categoria: "
+          type="textarea"
+          value={values.description}
+          name="description"
+          onChange={handleChange}
+        />
+
+        <FormField
+          label="Cor: "
+          type="color" 
+          value={values.color}
+          name="color"
+          onChange={handleChange}
+        />
 
         <button>
           Cadastrar

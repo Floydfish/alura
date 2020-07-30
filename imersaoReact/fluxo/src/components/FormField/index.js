@@ -1,16 +1,25 @@
 import React from 'react';
 
-function FormField({ value, onChange }) {
+function FormField({ label, type, value, name, onChange }) {
   return (
     <div>
       <label>
-        Nome da Categoria:
-        <input 
-          type="text"
-          value={value.name}
-          name="name"
-          onChange={onChange}
-        />
+        {label}
+        {type !== 'textarea' && 
+          <input
+            type={type}
+            value={value}
+            name={name}
+            onChange={onChange}
+          />
+        }
+        {type === 'textarea' && 
+          <textarea
+            value={value}
+            name={name}
+            onChange={onChange}
+          />
+        }
       </label>
     </div>
   )
