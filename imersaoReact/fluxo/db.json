@@ -1,0 +1,16 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Pé da Estrada",
+      "description": "Juntando umas viagens",
+      "color": "#cbd1ff"
+    },
+    {
+      "id": 2,
+      "name": "Crônicas de uma vida comun",
+      "description": "Falando sobre coisas aleatórias",
+      "color": "#cbd1ff"
+    }
+  ]
+}

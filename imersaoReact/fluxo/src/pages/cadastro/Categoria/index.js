@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
@@ -30,6 +30,27 @@ function CadastroCategoria() {
     );
   }
 
+  useEffect(() => {
+    console.log('Alo teste')
+    setTimeout(() => {
+      setCategories([
+        ...categories,
+        {
+          "id": 1,
+          "name": "Pé da Estrada",
+          "description": "Juntando umas viagens",
+          "color": "#cbd1ff"
+        },
+        {
+          "id": 2,
+          "name": "Crônicas de uma vida comum",
+          "description": "Falando sobre coisas aleatórias",
+          "color": "#cbd1ff"
+        },
+      ]);
+    }, 4 * 1000);
+  }, [])
+
   return (
     <PageDefault>
       <h1>
@@ -50,7 +71,7 @@ function CadastroCategoria() {
 
             setValues(initialValues);
           }
-}
+        }
       >
         <FormField
           label="Nome da Categoria: "
@@ -80,6 +101,10 @@ function CadastroCategoria() {
           Cadastrar
         </Button>
       </form>
+
+      {categories.length === 0 && <div>
+        Loading...
+      </div>}
 
       <ul>
         {categories.map((category) => (
