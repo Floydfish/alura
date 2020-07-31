@@ -7,7 +7,7 @@ import Button from '../../../components/Button';
 function CadastroCategoria() {
   const initialValues = {
     name: '',
-    description: 'Ha',
+    description: '',
     color: '',
   };
 
@@ -82,8 +82,8 @@ function CadastroCategoria() {
       </form>
 
       <ul>
-        {categories.map((category, index) => (
-          <li key={`${category}${index}`}>
+        {categories.map((category) => (
+          <li key={`${category.name}`}>
             {category.name}
           </li>
         ))}
