@@ -31,24 +31,14 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    console.log('Alo teste')
-    setTimeout(() => {
-      setCategories([
-        ...categories,
-        {
-          "id": 1,
-          "name": "Pé da Estrada",
-          "description": "Juntando umas viagens",
-          "color": "#cbd1ff"
-        },
-        {
-          "id": 2,
-          "name": "Crônicas de uma vida comum",
-          "description": "Falando sobre coisas aleatórias",
-          "color": "#cbd1ff"
-        },
-      ]);
-    }, 4 * 1000);
+    const URL = "http://localhost:8080/categories"
+    fetch(URL)
+      .then(async (res) => {
+        const answer = await res.json();
+        setCategories([
+          ...answer,
+        ]);
+      });
   }, [])
 
   return (
