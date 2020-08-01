@@ -31,9 +31,9 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    const URL = window.location.hostname.includes('hostname') 
-    ? 'http://localhost:8080/categories' 
-    : "http://floxu.herokuapp.com/categories";
+    const URL = window.location.hostname.includes('hostname')
+      ? 'http://localhost:8080/categories'
+      : 'http://floxu.herokuapp.com/categories';
     fetch(URL)
       .then(async (res) => {
         const answer = await res.json();
@@ -41,7 +41,7 @@ function CadastroCategoria() {
           ...answer,
         ]);
       });
-  }, [])
+  }, []);
 
   return (
     <PageDefault>
@@ -94,9 +94,11 @@ function CadastroCategoria() {
         </Button>
       </form>
 
-      {categories.length === 0 && <div>
+      {categories.length === 0 && (
+      <div>
         Loading...
-      </div>}
+      </div>
+      )}
 
       <ul>
         {categories.map((category) => (
