@@ -35,8 +35,8 @@ function Home() {
       <Menu />
 
       {JSON.stringify(dadosIniciais)}
-
-      {/* <BannerMain
+      {/*
+      <BannerMain
 
         videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
 
@@ -44,9 +44,9 @@ function Home() {
 
         videoDescription={"P'aquí p'allá"}
 
-      /> */}
+      />
 
-      {/* {dadosIniciais.categorias.map((cat, i) => (i === 0 ? (
+      {dadosIniciais.categorias.map((cat, i) => (i === 0 ? (
 
         <Carousel ignoreFirstVideo category={cat} />
 
