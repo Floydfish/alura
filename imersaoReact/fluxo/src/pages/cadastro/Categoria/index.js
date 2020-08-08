@@ -17,7 +17,7 @@ function CadastroCategoria() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    const URL = window.location.hostname.includes('hostname')
+    const URL = window.location.hostname.includes('localhost')
       ? 'http://localhost:8080/categories'
       : 'http://floxu.herokuapp.com/categories';
     fetch(URL)
@@ -87,7 +87,7 @@ function CadastroCategoria() {
       <ul>
         {categories.map((category) => (
           <li key={`${category.titulo}`}>
-            {category.name}
+            {category.titulo}
           </li>
         ))}
       </ul>

@@ -1,34 +1,65 @@
-import React from 'react';
+/* eslint-disable linebreak-style */
+import React, { useEffect, useState } from 'react';
+
 import Menu from '../../components/Menu';
-import dadosIniciais from '../../data/dados_iniciais.json';
+
+// import dadosIniciais from '../../data/dados_iniciais.json';
+
 import BannerMain from '../../components/BannerMain';
-import Carousel from '../../components/Carousel'
-import Footer from '../../components/Footer'
 
+import Carousel from '../../components/Carousel';
 
+import PageDefault from '../../components/PageDefault';
+
+import Footer from '../../components/Footer';
+
+import categoriesRepository from '../../repositories/categories';
 
 function Home() {
+  const [dadosIniciais, setDadosIniciais] = useState([]);
+
+  useEffect(() => {
+    categoriesRepository.getAllWithVideos()
+      .then((videosCategories) => {
+        setDadosIniciais(videosCategories);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
   return (
-    <div style={{ background: "#141414" }}>
+
+    <PageDefault>
+
       <Menu />
 
-      <BannerMain
-        videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
-        url={dadosIniciais.categorias[0].videos[0].url}
-        videoDescription={"P'aquí p'allá"}
-      />
+      {JSON.stringify(dadosIniciais)}
 
-      {dadosIniciais.categorias.map((cat, i) => {
-        return i === 0 ? (
-          <Carousel ignoreFirstVideo category={cat} />
-        ) : (
-          <Carousel category={cat} />
-        )
-      })}
-        
+      {/* <BannerMain
+
+        videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
+
+        url={dadosIniciais.categorias[0].videos[0].url}
+
+        videoDescription={"P'aquí p'allá"}
+
+      /> */}
+
+      {/* {dadosIniciais.categorias.map((cat, i) => (i === 0 ? (
+
+        <Carousel ignoreFirstVideo category={cat} />
+
+      ) : (
+
+        <Carousel category={cat} />
+
+      )))} */}
+
       <Footer />
 
-    </div>
+    </PageDefault>
+
   );
 }
 

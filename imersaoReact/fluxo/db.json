@@ -1,5 +1,5 @@
 {
-  "categorias": [
+  "categories": [
     {
       "titulo": "Calistenia",
       "descricao": "Calistenia: o Básico",
@@ -7,10 +7,10 @@
       "id": 1
     },
     {
-      "id": 2,
       "titulo": "Hiit",
       "descricao": "Treino de hiit para pernas e glúteos",
-      "cor": "#f78b03"
+      "cor": "#f78b03",
+      "id": 2
     },
     {
       "titulo": "Aeróbico",
