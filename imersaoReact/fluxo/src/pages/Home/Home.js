@@ -1,18 +1,8 @@
 /* eslint-disable linebreak-style */
 import React, { useEffect, useState } from 'react';
-
-import Menu from '../../components/Menu';
-
-// import dadosIniciais from '../../data/dados_iniciais.json';
-
 import BannerMain from '../../components/BannerMain';
-
 import Carousel from '../../components/Carousel';
-
 import PageDefault from '../../components/PageDefault';
-
-import Footer from '../../components/Footer';
-
 import categoriesRepository from '../../repositories/categories';
 
 function Home() {
@@ -24,39 +14,56 @@ function Home() {
         setDadosIniciais(videosCategories);
       })
       .catch((err) => {
-        console.log(err.message);
+        console.error('Não foi possível acessar o servidor.', err);
       });
   }, []);
 
   return (
 
-    <PageDefault>
+    <PageDefault paddingAll={0}>
+      {dadosIniciais.length === 0 && (
+        <div>Loading...</div>
+      )}
 
-      <Menu />
+      {dadosIniciais.map((categoria, indice) => {
+        if (indice === 0) {
+          return (
+            <div key={categoria.id}>
+              <BannerMain
+                videoTitle={dadosIniciais[0].videos[0].titulo}
+                url={dadosIniciais[0].videos[0].url}
+                videoDescription="Daqui p'allá"
+              />
+              <Carousel
+                ignoreFirstVideo
+                category={dadosIniciais[0]}
+              />
+            </div>
+          );
+        }
 
-      {JSON.stringify(dadosIniciais)}
-      {/*
-      <BannerMain
+        return (
+          <Carousel
+            key={categoria.id}
+            category={categoria}
+          />
+        );
+      })}
+      {/* {dadosIniciais.length >= 1 && (
+        <>
+          <BannerMain
+            videoTitle={dadosIniciais[0].videos[0].titulo}
+            url={dadosIniciais[0].videos[0].url}
+            videoDescription="P'aquí p'allá"
+          />
 
-        videoTitle={dadosIniciais.categorias[0].videos[0].titulo}
-
-        url={dadosIniciais.categorias[0].videos[0].url}
-
-        videoDescription={"P'aquí p'allá"}
-
-      />
-
-      {dadosIniciais.categorias.map((cat, i) => (i === 0 ? (
-
-        <Carousel ignoreFirstVideo category={cat} />
-
-      ) : (
-
-        <Carousel category={cat} />
-
-      )))} */}
-
-      <Footer />
+          {dadosIniciais.categorias.map((cat, i) => (i === 0 ? (
+            <Carousel ignoreFirstVideo category={cat} />
+          ) : (
+            <Carousel category={cat} />
+          )))}
+        </>
+      )} */}
 
     </PageDefault>
 
