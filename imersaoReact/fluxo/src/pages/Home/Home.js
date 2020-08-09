@@ -49,21 +49,6 @@ function Home() {
           />
         );
       })}
-      {/* {dadosIniciais.length >= 1 && (
-        <>
-          <BannerMain
-            videoTitle={dadosIniciais[0].videos[0].titulo}
-            url={dadosIniciais[0].videos[0].url}
-            videoDescription="P'aquí p'allá"
-          />
-
-          {dadosIniciais.categorias.map((cat, i) => (i === 0 ? (
-            <Carousel ignoreFirstVideo category={cat} />
-          ) : (
-            <Carousel category={cat} />
-          )))}
-        </>
-      )} */}
 
     </PageDefault>
 

@@ -18,8 +18,8 @@ function CadastroCategoria() {
 
   useEffect(() => {
     const URL = window.location.hostname.includes('localhost')
-      ? 'http://localhost:8080/categories'
-      : 'http://floxu.herokuapp.com/categories';
+      ? 'http://localhost:8080/categorias'
+      : 'http://floxu.herokuapp.com/categorias';
     fetch(URL)
       .then(async (res) => {
         const answer = await res.json();
@@ -33,7 +33,7 @@ function CadastroCategoria() {
     <PageDefault>
       <h1>
         Cadastro de Categoria:
-        {values.name}
+        {values.nme}
       </h1>
 
       <form
